@@ -12,54 +12,58 @@ Predict and understand YouTube video engagement using machine learning and natur
 
 ---
 
-## 🔍 Data Overview
+## 🧭 Methodology
 
-**Source:** YouTube Data API  
-**Features Used:**
-- Video metadata (title, description, duration, category)
-- Engagement stats (likes, comments, views)
-- Posting time, day type
-- NLP features (TF-IDF, sentiment, word count)
+![Methodology](./Methodology.png)
 
-**Tech Stack:**
-- Python, Jupyter
-- XGBoost
-- TF-IDF + SVD
-- Matplotlib / Seaborn for visuals
+We followed a structured five-step process:
+1. Data Preprocessing  
+2. Exploratory Data Analysis  
+3. Modeling with XGBoost, TF-IDF & SVD  
+4. Feature Importance Analysis  
+5. Visualization & Interpretation
 
 ---
 
-## 📊 Data Processing & EDA
+## 📊 Data Processing & Correlation Insights
 
 ![Data Processing](./Data-Processing.png)
 
-- Cleaned missing values, outliers, and encoded categorical variables.
-- **Word Cloud:** Highlights entertainment, investing, and tutorial keywords as major engagement drivers.
-- **Correlation Matrix:** Views strongly drive likes and comments. Sentiment features are weakly correlated.
+- Handled missing values, encoded categories, analyzed sentiment.
+- **Word Cloud:** Keywords like “show”, “business”, and “tutorial” appear frequently.
+- **Correlation Matrix:** Strongest link is between views and likes. Sentiment has weaker correlations.
 
 ---
 
-## 🔎 Feature Importance – XGBoost
+## 📈 Temporal Engagement Patterns
+
+![EDA](./EDA.png)
+
+- **Weekends** and **afternoons** show higher engagement.
+- Insight: Users interact more during leisure hours — timing matters!
+
+---
+
+## 📌 Feature Importance with XGBoost
 
 ![Data Analysis](./Data-Analysis.png)
 
-- **Top Features:**
-  - `views` (importance = 0.484) is the strongest predictor
-  - `category`, `duration`, and `description sentiment` follow
-- **Weaker Features:**
-  - Posting time and title sentiment have limited impact
+- Top Driver: `views` (0.484) — key for algorithmic visibility.
+- Other contributors: `category`, `duration`, and `description sentiment`.
+- Least impact: `posting time`, `day type`.
 
 ---
 
-## ✍️ NLP with TF-IDF + SVD
+## ✍️ NLP Modeling: TF-IDF + SVD
 
-**Why it matters:**
-- **TF-IDF** converts titles/descriptions into weighted keyword vectors
-- **SVD** reduces dimensionality while preserving topic relevance
+![TF-IDF & SVD](./Screenshot%202025-05-02%20at%2013.40.03.png)
 
-**Result:**
-- MSE for likes dropped from **3.82 → 3.50**
-- MSE for comments dropped from **3.38 → 2.51**
+- **TF-IDF:** Converts text into features  
+- **SVD:** Reduces dimensionality  
+- Improved MSE for:
+  - Comments: 3.38 → 2.51  
+  - Likes: 3.82 → 3.50  
+- High-engagement keywords: “cats”, “collection”, “business ideas”, “amazing”
 
 ---
 
@@ -76,5 +80,4 @@ Predict and understand YouTube video engagement using machine learning and natur
 
 ---
 
-## 📁 Project Structure
 
