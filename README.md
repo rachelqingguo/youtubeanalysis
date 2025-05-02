@@ -1,50 +1,80 @@
-# Predicting YouTube Video Engagement
+# 🎥 YouTube Engagement Prediction with XGBoost & NLP
 
-This project aims to predict and optimize YouTube video engagement using data science techniques, natural language processing (NLP), and machine learning. The dataset is collected from YouTube API, including metadata such as views, likes, comments, video duration, title and description, and category.
+Welcome to our project exploring what drives YouTube video engagement. Using **XGBoost**, **TF-IDF**, and structured feature engineering, we analyze how likes, comments, and views are influenced — and how to optimize content strategy accordingly.
+
+---
+
+## 📌 Project Summary
+
+**Objective:**  
+Predict and understand YouTube video engagement using machine learning and natural language processing.
 
 
-## Overview
-The goal of this project is to identify key factors influencing YouTube video engagement and build a predictive model to forecast user interactions (likes, comments). Through the integration of NLP techniques, like TF-IDF, and machine learning models like XGBoost, we aim to provide actionable insights to content creators for optimizing video performance.
+---
 
-## Key Findings
-- **Views strongly influence likes and comments**, driving engagement through visibility.
-- Optimizing **video titles and descriptions** with high-impact keywords increases discoverability and engagement.
-- **TF-IDF** significantly improves the accuracy of engagement prediction, especially for comments.
-- **Category-wise analysis** reveals that music and sports categories perform the best in terms of views, while news and politics attract more comments.
+## 🔍 Data Overview
 
-## Methodology
+**Source:** YouTube Data API  
+**Features Used:**
+- Video metadata (title, description, duration, category)
+- Engagement stats (likes, comments, views)
+- Posting time, day type
+- NLP features (TF-IDF, sentiment, word count)
 
-### Data Collection and Preprocessing
-The dataset (10,516 rows) was obtained using the YouTube API. Data preprocessing involved handling missing values, encoding categorical variables, feature engineering, and performing sentiment analysis on video titles and descriptions.
+**Tech Stack:**
+- Python, Jupyter
+- XGBoost
+- TF-IDF + SVD
+- Matplotlib / Seaborn for visuals
 
-### Exploratory Data Analysis (EDA)
-EDA was conducted to identify key feature correlations and trends. Key insights include:
-- A **correlation** between views and likes (0.68) and views and comments (0.41).
-- **Time of posting** has a slight impact, with afternoon and evening posts yielding better engagement.
+---
 
-### Machine Learning Model
-- **XGBoost** was used to model engagement, optimizing parameters with RandomizedSearchCV.
-- **TF-IDF** was applied to extract key terms from video titles and descriptions, with **Singular Value Decomposition (SVD)** to reduce dimensionality.
-- Feature importance analysis identified **views**, **category**, and **title/description sentiment** as the most influential factors.
+## 📊 Data Processing & EDA
 
-## Recommendations
-1. **SEO Optimization and Tagging:** Optimize titles, descriptions, and tags for searchability to increase initial visibility.
-2. **Engaging Thumbnails and Titles:** Create concise, compelling titles and thumbnails to enhance click-through rates.
-3. **Category Selection:** Choose high-performing categories to increase the likelihood of appearing in recommendations.
-4. **Leverage Posting Times:** Post during peak hours (afternoon/evening, especially on weekends) for higher engagement.
+![Data Processing](./Data-Processing.png)
 
-## Conclusion
-By applying these strategies, YouTube content creators can improve visibility and engagement. The integration of TF-IDF and SVD boosts prediction accuracy, while optimizing metadata and content strategy can lead to increased views and sustained audience interaction.
+- Cleaned missing values, outliers, and encoded categorical variables.
+- **Word Cloud:** Highlights entertainment, investing, and tutorial keywords as major engagement drivers.
+- **Correlation Matrix:** Views strongly drive likes and comments. Sentiment features are weakly correlated.
 
-## Files
-- **BAX 452 Final Report.pdf**: Detailed report of the project.
-- **BAX 452 Project.ipynb**: Jupyter notebook for data analysis, feature engineering, and model implementation.
+---
 
-## Installation
-To run the project, clone this repository and install the necessary dependencies:
+## 🔎 Feature Importance – XGBoost
 
-```bash
-git clone https://github.com/your-username/youtube-engagement-prediction.git
-cd youtube-engagement-prediction
-pip install -r requirements.txt
-```
+![Data Analysis](./Data-Analysis.png)
+
+- **Top Features:**
+  - `views` (importance = 0.484) is the strongest predictor
+  - `category`, `duration`, and `description sentiment` follow
+- **Weaker Features:**
+  - Posting time and title sentiment have limited impact
+
+---
+
+## ✍️ NLP with TF-IDF + SVD
+
+**Why it matters:**
+- **TF-IDF** converts titles/descriptions into weighted keyword vectors
+- **SVD** reduces dimensionality while preserving topic relevance
+
+**Result:**
+- MSE for likes dropped from **3.82 → 3.50**
+- MSE for comments dropped from **3.38 → 2.51**
+
+---
+
+## ✅ Strategic Recommendations
+
+![Recommendation](./Recommendation.png)
+
+| Action | Reason |
+|--------|--------|
+| 🎯 Use high-impact keywords | Increases searchability and discoverability |
+| 🖼️ Focus on thumbnails & CTR | Higher click-through = higher views |
+| 🗓️ Post during peak times | Afternoons and weekends perform better |
+| 💬 Drive interaction | Comments & polls fuel algorithm visibility |
+
+---
+
+## 📁 Project Structure
+
